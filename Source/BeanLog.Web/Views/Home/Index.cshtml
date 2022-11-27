@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using BeanLog.Spa
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+@if (!HttpContextAccessor!.HttpContext!.Request.Path.StartsWithSegments("/authentication"))
+{
+    <component type="typeof(App)" render-mode="WebAssembly"/>
+}
+else
+{
+    <component type="typeof(App)" render-mode="WebAssemblyPrerendered"/>
+}

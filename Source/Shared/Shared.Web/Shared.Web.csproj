@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+        <AssemblyName>BeanLog.Shared.Web</AssemblyName>
+        <RootNamespace>BeanLog.Shared.Web</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Areas\Identity\Views\Session\Login.cshtml" />
+        <EmbeddedResource Include="Areas\Identity\Views\Shared\_PreLoginLayout.cshtml" />
+        <EmbeddedResource Include="Areas\Identity\Views\_ViewImports.cshtml" />
+        <EmbeddedResource Include="Areas\Identity\Views\_ViewStart.cshtml" />
+        <EmbeddedResource Include="resources\**\*" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="resources\lib" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="resources\css\global.css" />
+      <Content Include="resources\js\global.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shared.Web.Models\Shared.Web.Models.csproj" />
+    </ItemGroup>
+
+</Project>
