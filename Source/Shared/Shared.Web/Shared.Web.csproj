@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Areas\Identity\Views\Session\Login.cshtml" />
+        <EmbeddedResource Include="Areas\Identity\Views\Account\Login.cshtml" />
         <EmbeddedResource Include="Areas\Identity\Views\Shared\_PreLoginLayout.cshtml" />
         <EmbeddedResource Include="Areas\Identity\Views\_ViewImports.cshtml" />
         <EmbeddedResource Include="Areas\Identity\Views\_ViewStart.cshtml" />

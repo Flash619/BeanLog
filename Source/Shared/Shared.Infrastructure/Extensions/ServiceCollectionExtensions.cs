@@ -28,9 +28,9 @@ public static class ServiceCollectionExtensions
             options.User.RequireUniqueEmail = true;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
             options.Password.RequireDigit = true;
+            options.Password.RequireNonAlphanumeric = true;
             options.Password.RequiredLength = 8;
             options.Password.RequiredUniqueChars = 4;
-            options.Stores.ProtectPersonalData = false;
         }).AddEntityFrameworkStores<BeanLogDbContext>();
 
         services.PostConfigure<StaticFileOptions>(options =>
