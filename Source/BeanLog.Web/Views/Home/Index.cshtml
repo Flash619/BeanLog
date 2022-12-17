@@ -3,11 +3,32 @@
 
 @inject IHttpContextAccessor HttpContextAccessor
 
-@if (!HttpContextAccessor!.HttpContext!.Request.Path.StartsWithSegments("/authentication"))
+@{
+    Layout = "_LayoutBase";
+    ViewData["Title"] = "BeanLog";
+}
+
+@section Links
+{
+    <base href="/"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <link href="~/_content/MudBlazor/MudBlazor.min.css" rel="stylesheet"/>
+}
+
+@section Scripts
+{
+    <script src="~/_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication/AuthenticationService.js"></script>
+    <script src="~/_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="~/_framework/blazor.webassembly.js"></script>
+}
+
+@if (HttpContextAccessor!.HttpContext!.Request.Path.StartsWithSegments("/authentication"))
 {
     <component type="typeof(App)" render-mode="WebAssembly"/>
+    <span>WEB ASSEMBLY</span>
 }
 else
 {
     <component type="typeof(App)" render-mode="WebAssemblyPrerendered"/>
+    <span>PRE-RENDERED</span>
 }

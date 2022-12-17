@@ -1,17 +1,24 @@
-using BeanLog.Shared.Infrastructure.Extensions;
+using BeanLog.Modules.Core.Infrastructure.Extensions;
+using BeanLog.Modules.Identity.Infrastructure.Extensions;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSharedResources(builder.Environment, builder.Configuration.GetSection("Shared"));
+builder.Services.AddCoreModule(builder.Configuration.GetSection("Modules:Core"));
+builder.Services.AddIdentityModule(builder.Configuration.GetSection("Modules:Identity"));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMudServices(); // Required for prerendering.
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
+    app.UseWebAssemblyDebugging();
 }
 else
 {
@@ -20,18 +27,13 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection()
+    .UseAuthentication()
+    .UseBlazorFrameworkFiles()
+    .UseStaticFiles()
+    .UseRouting()
+    .UseAuthorization();
 
-app.UseBlazorFrameworkFiles();
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapFallbackToController("Index", "Home");
 
 app.Run();

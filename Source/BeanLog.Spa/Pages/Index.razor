@@ -1,13 +1,15 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>BeanLog</PageTitle>
 
-<h1>Hello, world!</h1>
-
-<div class="alert alert-warning" role="alert">
-    Before authentication will function correctly, you must configure your provider details in <code>Program.cs</code>
-</div>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?"/>
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12">
+            <p>
+                <span class="mud-typography mud-typography-h1">We really like coffee...</span><br/>
+                <span class="mud-typography mud-typography-h2">but we cant remember it all...</span><br/>
+                <span class="mud-typography mud-typography-h2">so we made a log!</span><br/>
+            </p>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
